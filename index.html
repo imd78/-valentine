@@ -131,41 +131,6 @@
             position: relative;
             z-index: 3;
         }
-
-        /* Full Page Message After Yes Button */
-        .full-page-message {
-            display: none;
-            background-color: #4CAF50;  /* Green background */
-            color: white;
-            font-size: 36px;
-            text-align: center;
-            padding: 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .full-page-message span {
-            font-size: 20px;
-            margin-top: 10px;
-        }
-
-        .emoji-background {
-            font-size: 50px;
-            margin-top: 10px;
-            position: absolute;
-            top: 20%;
-            left: 30%;
-            z-index: 1;
-        }
-        
     </style>
 </head>
 <body>
@@ -212,26 +177,13 @@
         <div class="star" style="top: 95%; left: 45%;">⭐</div>
     </div>
 
-    <!-- Full Page Message for Yes Button -->
-    <div class="full-page-message" id="fullMessage">
-        <span>YAY! My Owl said YES! 🦉❤️🐢</span>
-        <span>We are a match made in the stars! 🌟</span>
-        <span>I'll see you on 14/02/2025 at Sheraton Bahrain Hotel! 💕</span>
-        <span>Can't wait for the amazing memories we will make together. 🥰</span>
-        <div class="emoji-background">
-            🦉🐢♈♉8️⃣78️⃣✨🎉🎉🎉
-        </div>
-    </div>
-
     <script>
         let noButtonPressCount = 0; // To track how many times the No button is pressed
         let noMessagesShown = []; // To keep track of the messages already shown
 
         // Yes Button Confirmation
         document.getElementById("yesButton").onclick = function() {
-            document.getElementById("fullMessage").style.display = "flex"; // Show the full message
-            document.getElementById("noButton").style.visibility = "hidden"; // Hide the No button
-            document.getElementById("yesButton").style.visibility = "hidden"; // Hide the Yes button
+            alert("YAY! My Owl said YES! 🦉❤️🐢 \nI’m so happy, Noor! You’re the best thing that ever happened to me, and I can’t wait to spend the rest of my life with you! You make my heart skip a beat, my smile grow wider, and my world brighter! 🌟\n\nAlso, how do you manage to be so amazing while being an Aries? You’re a fiery force of love, joy, and determination, and I just can’t get enough of you. 😘🔥💜\n\nI’ll see you on 14/02/2025 at Sheraton Bahrain Hotel! I can’t wait to hold you in my arms and say “I love you” a million times. 🥰");
         };
 
         // No Button Logic - With Shrinking and Changing Messages
@@ -242,4 +194,44 @@
                     "Are you sure? What about my cute turtle face? 🐢",
                     "I know you're stubborn, but say yes! 😘",
                     "Your owl eyes sparkle when you say yes! 💜",
-                    "If you say no again, I will hide in my turtle
+                    "If you say no again, I will hide in my turtle shell! 🐢😢",
+                    "Noor! Your Aries fire can't resist love! 🔥",
+                    "Fine, but remember, I love you forever! ❤️"
+                ];
+
+                // Ensure the message is not repeated
+                let availableMessages = noMessages.filter((msg, index) => !noMessagesShown.includes(index));
+                
+                if (availableMessages.length > 0) {
+                    let randomIndex = Math.floor(Math.random() * availableMessages.length);
+                    let message = availableMessages[randomIndex];
+                    alert(message);
+
+                    // Add the index of the message to the shown list
+                    let indexOfMessage = noMessages.indexOf(availableMessages[randomIndex]);
+                    noMessagesShown.push(indexOfMessage);
+                }
+
+                // Increment the counter
+                noButtonPressCount++;
+
+                // Shrink the "No" button progressively with each click
+                let noButton = document.getElementById("noButton");
+                let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
+                if (currentSize > 10) {
+                    noButton.style.transform = `scale(0.9)`;  // Shrinks the button slightly each time
+                }
+                if (currentSize <= 10) {
+                    noButton.style.visibility = "hidden"; // Hide the button when it becomes too small
+                    document.getElementById("yesButton").style.visibility = "visible"; // Keep the Yes button visible
+                }
+            } else {
+                alert("Okay... You made me disappear, my owl will be sad! 🦉💜");
+                document.getElementById("noButton").style.visibility = "hidden"; // Completely hide the button after limit is reached
+                document.getElementById("yesButton").style.visibility = "visible"; // Ensure Yes button stays visible
+            }
+        };
+    </script>
+
+</body>
+</html>
