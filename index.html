@@ -32,6 +32,7 @@
             display: flex;
             justify-content: center;
             gap: 50px;
+            z-index: 2; /* Ensure icons appear above background */
         }
 
         .owl { color: purple; }
@@ -53,6 +54,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 20px;
+            z-index: 3; /* Ensure buttons are clickable */
         }
 
         .yes-button, .no-button {
@@ -61,6 +63,7 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
+            z-index: 3; /* Ensure buttons are clickable */
         }
 
         .yes-button {
@@ -87,7 +90,7 @@
             text-align: center;
             width: 150px;  /* Same Size for All Date Boxes */
             height: 70px;  /* Uniform Height */
-            z-index: 3;
+            z-index: 2;
             box-sizing: border-box; /* To avoid any overflow issues */
         }
 
@@ -121,6 +124,12 @@
             right: 0;
             bottom: 0;
             z-index: 1;
+        }
+
+        /* Ensure the buttons are at the top layer */
+        .button-container {
+            position: relative;
+            z-index: 3;
         }
     </style>
 </head>
