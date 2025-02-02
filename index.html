@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
+        /* General Styling */
         body {
             background-color: #f5e1f7; /* Light purple for Noor */
             text-align: center;
@@ -21,35 +22,29 @@
             justify-content: center;
             align-items: center;
             position: relative;
-        }
-        
-        h1 {
-            color: #6a0dad; /* Dark purple text */
-            font-size: 36px;
-            margin-top: 20px;
+            overflow: hidden; /* Prevents scrolling */
         }
 
+        /* Big Icons */
         .icons {
-            font-size: 120px;
+            font-size: 150px;
             margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
         }
 
         .owl { color: purple; }
         .turtle { color: green; }
 
-        .dates {
-            position: absolute;
-            font-size: 16px;
-            font-weight: bold;
-            color: #6a0dad;
-            opacity: 0.6;
+        /* Love Question */
+        h1 {
+            color: #6a0dad; /* Dark purple text */
+            font-size: 36px;
+            margin-top: 0;
+            position: relative;
+            z-index: 2;
         }
-
-        /* Positioning Dates Randomly Around the Page */
-        .date1 { top: 10%; left: 5%; }
-        .date2 { top: 80%; right: 10%; }
-        .date3 { bottom: 10%; left: 15%; }
-        .date4 { bottom: 80%; right: 15%; }
 
         /* YES Button */
         .yes-button {
@@ -75,6 +70,21 @@
             margin: 10px;
             transition: transform 0.3s ease-in-out;
         }
+
+        /* Love Dates - Subtly Placed Around the Edges */
+        .dates {
+            position: absolute;
+            font-size: 18px;
+            font-weight: bold;
+            color: #6a0dad;
+            opacity: 0.6;
+        }
+
+        .date1 { top: 5%; left: 5%; }      /* Top Left */
+        .date2 { top: 5%; right: 5%; }     /* Top Right */
+        .date3 { bottom: 5%; left: 5%; }   /* Bottom Left */
+        .date4 { bottom: 5%; right: 5%; }  /* Bottom Right */
+
     </style>
 </head>
 <body>
@@ -85,7 +95,7 @@
     <div class="dates date3">🎂 08/04/1999 - The day my owl was born</div>
     <div class="dates date4">🐢 22/04/1997 - The day her turtle was born</div>
 
-    <!-- Turtle and Owl Icons -->
+    <!-- Turtle and Owl Icons at the Top -->
     <div class="icons">
         <i class="fas fa-owl owl"></i>  
         <i class="fas fa-turtle turtle"></i>
