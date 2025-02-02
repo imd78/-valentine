@@ -181,36 +181,35 @@
 
     <script>
         let noButtonPressCount = 0; // To track how many times the No button is pressed
-        let noMessagesShown = []; // To keep track of the messages already shown
+        let noMessages = [
+    "No? But I’m your turtle... 🐢",
+    "You can’t resist me forever, can you? 😉",
+    "You know you're my favorite person, right? But still, I’m not letting you off the hook that easily! 😜", // Updated third message
+    "I know your stubbornness, but I'm more stubborn than you now! 😂",
+    "I knew you couldn't resist my love forever! 🥰",
+    "It’s impossible to say no to me, right? 😜",
+    "I see your fire, but my turtle’s love is unbreakable! 🐢❤️🔥",
+    "I know you're stubborn, but now I have no choice... 😂"
+        ];
 
         // Yes Button Confirmation
         document.getElementById("yesButton").onclick = function() {
-        alert("YAY! My Owl said YES! 🦉❤️🐢 \n\nWell, I guess it’s official now – you can’t resist my turtle charm! 🐢💚 But seriously, Noor, I’m so incredibly happy that you said yes! You're my best friend, my love, and the reason I smile every single day. I can’t wait to hold you close and spoil you with all the love and joy you deserve. 😘💖\n\nAlso, just so you know, I’m probably more stubborn than you... so you were never really getting away from me! 😜\n\nI’ll see you on 14/02/2025 at Sheraton Bahrain Hotel! Get ready for a night filled with laughter, love, and some seriously bad jokes! 😂💫");
+            alert("YAY! My Owl said YES! 🦉❤️🐢 \n\nWell, I guess it’s official now – you can’t resist my turtle charm! 🐢💚 But seriously, Noor, I’m so incredibly happy that you said yes! You're my best friend, my love, and the reason I smile every single day. I can’t wait to hold you close and spoil you with all the love and joy you deserve. 😘💖\n\nAlso, just so you know, I’m probably more stubborn than you... so you were never really getting away from me! 😜\n\nI’ll see you on 14/02/2025 at Sheraton Bahrain Hotel! Get ready for a night filled with laughter, love, and some seriously bad jokes! 😂💫");
         };
 
         // No Button Logic - With Shrinking and Changing Messages
         document.getElementById("noButton").onclick = function() {
-            let noMessages = [
-                "No? But I’m your turtle... 🐢",
-                "You can’t resist me forever, can you? 😉",
-                "I know your stubbornness, but I'm more stubborn than you now! 😂",
-                "I knew you couldn't resist my love forever! 🥰",
-                "It’s impossible to say no to me, right? 😜",
-                "I see your fire, but my turtle’s love is unbreakable! 🐢❤️🔥",
-                "You’re an Aries, but I’m more patient than you think... 😏",
-                "I know you're stubborn, but now I have no choice... 😂"
-            ];
-
             // Shrink button on click and show messages in order
             if (noButtonPressCount < 7) {
-                noButtonPressCount++;
-                let currentMessage = noMessages[noButtonPressCount - 1];
-                document.getElementById("noButton").style.transform = `scale(${1 - noButtonPressCount * 0.12})`;
+                let currentMessage = noMessages[noButtonPressCount];
+                document.getElementById("noButton").style.transform = `scale(${1 - (noButtonPressCount + 1) * 0.12})`;
                 alert(currentMessage);
+                noButtonPressCount++;
             } else {
                 // After 7 presses, hide No button and show Yes button
                 document.getElementById("noButton").style.display = "none";
                 document.getElementById("yesButton").classList.add("grown");
+                alert(noMessages[noButtonPressCount]); // Show the final message at the correct time
             }
         };
     </script>
