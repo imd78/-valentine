@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f3e5f5; /* Subtle purple background */
+            color: #4a148c; /* Deep purple text */
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            position: relative;
+            border: 2px solid #ba68c8; /* Light purple border */
+        }
+        h1 {
+            color: #6a1b9a; /* Rich purple heading */
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .yes-btn {
+            background-color: #8e24aa; /* Purple yes button */
+            color: white;
+        }
+        .no-btn {
+            background-color: #ddd;
+            color: black;
+        }
+        .hidden {
+            display: none;
+        }
+        .cute-img {
+            width: 120px;
+            height: auto;
+            margin: 10px;
+        }
+        .special-date {
+            font-size: 14px;
+            color: #7b1fa2;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <p class="special-date">04/04/2022 - The day we first spoke 🗨️💖</p>
+        <img src="https://cdn.pixabay.com/photo/2016/04/01/09/11/owl-1297771_1280.png" class="cute-img" alt="Cute Owl">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/turtle-2028256_1280.png" class="cute-img" alt="Cute Turtle">
+        <h1 id="question">Noor, will you be my Valentine? 💖</h1>
+        <button class="yes-btn" onclick="yesClicked()">Yes 😍</button>
+        <button class="no-btn" id="noButton" onclick="noClicked()">No 😢</button>
+        <p class="special-date">17/05/2022 - The day we confessed our love 💕✨</p>
+    </div>
+
+    <div class="container hidden" id="yesMessage">
+        <p class="special-date">08/04/1999 - The day my beautiful Noor was born 🌟🦉</p>
+        <img src="https://cdn.pixabay.com/photo/2016/04/01/09/11/owl-1297771_1280.png" class="cute-img" alt="Owl and Turtle Hugging">
+        <h1>🎉 YESSS! Noor, My Beautiful Owl! 🎉</h1>
+        <p>✨ The stars have aligned, and my fearless Aries queen has said <b>YES!</b> 🥰</p>
+        <p>💖 The wise and mesmerizing owl has finally chosen her slow but <i>determined</i> turtle—just as destiny intended! 🐢💕🦉</p>
+        <p>🌹 This Valentine’s Day, I promise to waddle towards you at top speed (which for a turtle, is VERY impressive).</p>
+        <p>🍫 I shall bring chocolates, love, and unlimited cuddles, because my owl deserves nothing less!</p>
+        <p>💌 Thank you for making this turtle the happiest reptile in the universe. Let’s make this Valentine’s Day the most <b>legendary</b> one yet!</p>
+        <p class="special-date">22/04/1997 - The day your turtle was born 🐢❤️</p>
+        <h2>❤️ I adore you, Noor! Forever your turtle! ❤️</h2>
+        <p class="special-date"><b>14/02/2025</b> - I'll see you at <b>Sheraton Bahrain Hotel</b> for the most magical Valentine's Day ever! 🌹💜</p>
+    </div>
+
+    <script>
+        let noButton = document.getElementById("noButton");
+        let question = document.getElementById("question");
+        let mainContainer = document.getElementById("mainContainer");
+        let yesMessage = document.getElementById("yesMessage");
+        let noSize = 20;
+        let messages = [
+            "Are you sure? 🥺",
+            "Really? But I got you chocolates... 🍫",
+            "What if I give you a puppy? 🐶",
+            "I know you're stubborn, but don't be this stubborn 😜",
+            "Are you having one of your mood swings? 👀",
+            "If I keep pressing, will your playful side say yes? 😉",
+            "You're making this turtle very sad... 😢",
+            "Fine, be stubborn! But I'm still waiting! 😏"
+        ];
+        let msgIndex = 0;
+
+        function noClicked() {
+            if (msgIndex < messages.length) {
+                question.innerText = messages[msgIndex];
+                msgIndex++;
+                noSize -= 2;
+                noButton.style.fontSize = noSize + "px";
+                noButton.style.padding = (noSize / 2) + "px";
+            } else {
+                noButton.style.display = "none";
+                question.innerText = "Guess there's only one option left! 😏";
+            }
+        }
+
+        function yesClicked() {
+            mainContainer.style.display = "none";
+            yesMessage.classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>
