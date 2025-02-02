@@ -13,27 +13,43 @@
             background-color: #f5e1f7; /* Light purple for Noor */
             text-align: center;
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
         
         h1 {
             color: #6a0dad; /* Dark purple text */
+            font-size: 36px;
+            margin-top: 20px;
         }
 
         .icons {
-            font-size: 80px;
-            margin: 20px;
+            font-size: 120px;
+            margin-bottom: 10px;
         }
 
         .owl { color: purple; }
         .turtle { color: green; }
 
         .dates {
-            margin-top: 20px;
-            font-size: 18px;
+            position: absolute;
+            font-size: 16px;
             font-weight: bold;
             color: #6a0dad;
+            opacity: 0.6;
         }
+
+        /* Positioning Dates Randomly Around the Page */
+        .date1 { top: 10%; left: 5%; }
+        .date2 { top: 80%; right: 10%; }
+        .date3 { bottom: 10%; left: 15%; }
+        .date4 { bottom: 80%; right: 15%; }
 
         /* YES Button */
         .yes-button {
@@ -63,7 +79,11 @@
 </head>
 <body>
 
-    <h1>Noor, Will You Be My Valentine?</h1>
+    <!-- Love Dates (Subtly Around the Page) -->
+    <div class="dates date1">🗓️ 04/04/2022 - The day we first spoke</div>
+    <div class="dates date2">❤️ 17/05/2022 - The day we confessed our love</div>
+    <div class="dates date3">🎂 08/04/1999 - The day my owl was born</div>
+    <div class="dates date4">🐢 22/04/1997 - The day her turtle was born</div>
 
     <!-- Turtle and Owl Icons -->
     <div class="icons">
@@ -71,15 +91,7 @@
         <i class="fas fa-turtle turtle"></i>
     </div>
 
-    <!-- Love Dates -->
-    <div class="dates">
-        🗓️ 04/04/2022 - The day we first spoke <br>
-        ❤️ 17/05/2022 - The day we confessed our love <br>
-        🎂 08/04/1999 - The day my owl was born <br>
-        🐢 22/04/1997 - The day her turtle was born
-    </div>
-
-    <br>
+    <h1>Noor, Will You Be My Valentine?</h1>
 
     <!-- Buttons -->
     <button class="yes-button" onclick="confirmYes()">Yes</button>
