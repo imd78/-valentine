@@ -46,43 +46,46 @@
             z-index: 2;
         }
 
-        /* YES Button */
+        /* YES & NO Buttons (Side by Side) */
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .yes-button, .no-button {
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
         .yes-button {
             background-color: #4CAF50;
             color: white;
-            font-size: 20px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin: 10px;
         }
 
-        /* NO Button (Shrinks Every Click) */
         .no-button {
             background-color: #FF5733;
             color: white;
-            font-size: 20px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin: 10px;
             transition: transform 0.3s ease-in-out;
         }
 
         /* Love Dates - Subtly Placed in Boxes */
         .dates {
             position: absolute;
-            font-size: 16px;
+            font-size: 14px; /* Smaller Font */
             font-weight: bold;
             color: #6a0dad;
-            background-color: rgba(255, 255, 255, 0.5); /* Transparent White */
-            border: 2px solid #6a0dad;
+            background-color: rgba(255, 255, 255, 0.3); /* More Transparent */
+            border: 1px solid #6a0dad;
             border-radius: 10px;
-            padding: 10px;
+            padding: 5px 10px;
             text-align: center;
-            width: 180px;
+            width: 160px;
         }
 
         .date1 { top: 5%; left: 5%; }      /* Top Left */
@@ -94,7 +97,7 @@
 </head>
 <body>
 
-    <!-- Love Dates (Neatly in Boxes) -->
+    <!-- Love Dates (Smaller & More Subtle) -->
     <div class="dates date1">🗓️ 04/04/2022 <br> The day we first spoke</div>
     <div class="dates date2">❤️ 17/05/2022 <br> The day we confessed our love</div>
     <div class="dates date3">🎂 08/04/1999 <br> The day my owl was born</div>
@@ -108,9 +111,11 @@
 
     <h1>Noor, Will You Be My Valentine?</h1>
 
-    <!-- Buttons -->
-    <button class="yes-button" onclick="confirmYes()">Yes</button>
-    <button class="no-button" onclick="shrinkNo(this)">No</button>
+    <!-- Buttons Side by Side -->
+    <div class="button-container">
+        <button class="yes-button" onclick="confirmYes()">Yes</button>
+        <button class="no-button" onclick="shrinkNo(this)">No</button>
+    </div>
 
     <script>
         let noClickCount = 0;
