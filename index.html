@@ -142,8 +142,8 @@
 
     <!-- Buttons Side by Side -->
     <div class="button-container">
-        <button class="yes-button" onclick="confirmYes()">Yes</button>
-        <button class="no-button" onclick="shrinkNo(this)">No</button>
+        <button class="yes-button" id="yesButton">Yes</button>
+        <button class="no-button" id="noButton" onclick="shrinkNo()">No</button>
     </div>
 
     <!-- Stars randomly placed -->
@@ -180,11 +180,13 @@
             "Fine, but remember, I love you forever! ❤️"
         ];
 
-        function confirmYes() {
+        // Yes Button Confirmation
+        document.getElementById("yesButton").onclick = function() {
             alert("YAY! My Owl said YES! 🦉❤️🐢 Can't wait to see you on 14/02/2025 at Sheraton Bahrain Hotel!");
-        }
+        };
 
-        function shrinkNo(button) {
+        // No Button Shrink Logic
+        function shrinkNo() {
             if (noClickCount < noMessages.length) {
                 alert(noMessages[noClickCount]); // Show different messages
                 noClickCount++;
@@ -193,9 +195,10 @@
             }
 
             // Shrink the "No" button
-            let currentSize = parseFloat(window.getComputedStyle(button).fontSize);
+            let noButton = document.getElementById("noButton");
+            let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
             if (currentSize > 5) {
-                button.style.transform = `scale(${0.9 ** noClickCount})`; 
+                noButton.style.transform = `scale(${0.9 ** noClickCount})`; 
             }
         }
     </script>
