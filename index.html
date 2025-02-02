@@ -71,13 +71,18 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Love Dates - Subtly Placed Around the Edges */
+        /* Love Dates - Subtly Placed in Boxes */
         .dates {
             position: absolute;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             color: #6a0dad;
-            opacity: 0.6;
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent White */
+            border: 2px solid #6a0dad;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            width: 180px;
         }
 
         .date1 { top: 5%; left: 5%; }      /* Top Left */
@@ -89,11 +94,11 @@
 </head>
 <body>
 
-    <!-- Love Dates (Subtly Around the Page) -->
-    <div class="dates date1">🗓️ 04/04/2022 - The day we first spoke</div>
-    <div class="dates date2">❤️ 17/05/2022 - The day we confessed our love</div>
-    <div class="dates date3">🎂 08/04/1999 - The day my owl was born</div>
-    <div class="dates date4">🐢 22/04/1997 - The day her turtle was born</div>
+    <!-- Love Dates (Neatly in Boxes) -->
+    <div class="dates date1">🗓️ 04/04/2022 <br> The day we first spoke</div>
+    <div class="dates date2">❤️ 17/05/2022 <br> The day we confessed our love</div>
+    <div class="dates date3">🎂 08/04/1999 <br> The day my owl was born</div>
+    <div class="dates date4">🐢 22/04/1997 <br> The day her turtle was born</div>
 
     <!-- Turtle and Owl Icons at the Top -->
     <div class="icons">
