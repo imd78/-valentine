@@ -179,6 +179,7 @@
 
     <script>
         let noButtonPressCount = 0; // To track how many times the No button is pressed
+        let noMessagesShown = []; // To keep track of the messages already shown
 
         // Yes Button Confirmation
         document.getElementById("yesButton").onclick = function() {
@@ -198,23 +199,36 @@
                     "Fine, but remember, I love you forever! ❤️"
                 ];
 
-                let randomIndex = Math.floor(Math.random() * noMessages.length); // Pick random message
-                alert(noMessages[randomIndex]);
+                // Ensure the message is not repeated
+                let availableMessages = noMessages.filter((msg, index) => !noMessagesShown.includes(index));
+                
+                if (availableMessages.length > 0) {
+                    let randomIndex = Math.floor(Math.random() * availableMessages.length);
+                    let message = availableMessages[randomIndex];
+                    alert(message);
 
-                noButtonPressCount++; // Increment the counter
+                    // Add the index of the message to the shown list
+                    let indexOfMessage = noMessages.indexOf(availableMessages[randomIndex]);
+                    noMessagesShown.push(indexOfMessage);
+                }
 
-                // Shrink the "No" button
+                // Increment the counter
+                noButtonPressCount++;
+
+                // Shrink the "No" button progressively with each click
                 let noButton = document.getElementById("noButton");
                 let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
                 if (currentSize > 10) {
-                    noButton.style.transform = `scale(0.9)`;  // Shrinks the button slightly
+                    noButton.style.transform = `scale(0.9)`;  // Shrinks the button slightly each time
                 }
                 if (currentSize <= 10) {
                     noButton.style.visibility = "hidden"; // Hide the button when it becomes too small
+                    document.getElementById("yesButton").style.visibility = "visible"; // Keep the Yes button visible
                 }
             } else {
                 alert("Okay... You made me disappear, my owl will be sad! 🦉💜");
                 document.getElementById("noButton").style.visibility = "hidden"; // Completely hide the button after limit is reached
+                document.getElementById("yesButton").style.visibility = "visible"; // Ensure Yes button stays visible
             }
         };
     </script>
