@@ -143,7 +143,7 @@
     <!-- Buttons Side by Side -->
     <div class="button-container">
         <button class="yes-button" id="yesButton">Yes</button>
-        <button class="no-button" id="noButton" onclick="shrinkNo()">No</button>
+        <button class="no-button" id="noButton">No</button>
     </div>
 
     <!-- Stars randomly placed -->
@@ -169,38 +169,33 @@
     </div>
 
     <script>
-        let noClickCount = 0;
-        const noMessages = [
-            "No? But Noor, I'm your Turtle 🐢 and I love you! 🥺",
-            "Are you sure? What about my cute turtle face? 🐢",
-            "I know you're stubborn, but say yes! 😘",
-            "Your owl eyes sparkle when you say yes! 💜",
-            "If you say no again, I will hide in my turtle shell! 🐢😢",
-            "Noor! Your Aries fire can't resist love! 🔥",
-            "Fine, but remember, I love you forever! ❤️"
-        ];
-
         // Yes Button Confirmation
         document.getElementById("yesButton").onclick = function() {
             alert("YAY! My Owl said YES! 🦉❤️🐢 Can't wait to see you on 14/02/2025 at Sheraton Bahrain Hotel!");
         };
 
-        // No Button Shrink Logic
-        function shrinkNo() {
-            if (noClickCount < noMessages.length) {
-                alert(noMessages[noClickCount]); // Show different messages
-                noClickCount++;
-            } else {
-                alert("Okay, okay, you win! But deep down, I know you love me! 😘");
-            }
+        // No Button Logic - With Shrinking and Changing Messages
+        document.getElementById("noButton").onclick = function() {
+            let noMessages = [
+                "No? But Noor, I'm your Turtle 🐢 and I love you! 🥺",
+                "Are you sure? What about my cute turtle face? 🐢",
+                "I know you're stubborn, but say yes! 😘",
+                "Your owl eyes sparkle when you say yes! 💜",
+                "If you say no again, I will hide in my turtle shell! 🐢😢",
+                "Noor! Your Aries fire can't resist love! 🔥",
+                "Fine, but remember, I love you forever! ❤️"
+            ];
+
+            let randomIndex = Math.floor(Math.random() * noMessages.length); // Pick random message
+            alert(noMessages[randomIndex]);
 
             // Shrink the "No" button
             let noButton = document.getElementById("noButton");
             let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
             if (currentSize > 5) {
-                noButton.style.transform = `scale(${0.9 ** noClickCount})`; 
+                noButton.style.transform = `scale(0.8)`;  // Shrinks the button slightly
             }
-        }
+        };
     </script>
 
 </body>
