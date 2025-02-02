@@ -201,21 +201,25 @@
                 "I know you're stubborn, but now I have no choice... 😂"
             ];
 
-            // Shrink button on click
+            // Shrink button on click and show messages in order
             if (noButtonPressCount < 8) {
-                document.getElementById("noButton").style.transform = `scale(${1 - noButtonPressCount * 0.1})`;
+                // Shrink the button with each press
+                document.getElementById("noButton").style.transform = `scale(${1 - (noButtonPressCount * 0.125)})`;
 
+                // Only show a new message when it hasn't been shown yet
                 if (!noMessagesShown.includes(noMessages[noButtonPressCount])) {
                     alert(noMessages[noButtonPressCount]);
-                    noMessagesShown.push(noMessages[noButtonPressCount]);
+                    noMessagesShown.push(noMessages[noButtonPressCount]); // Mark this message as shown
                 }
 
                 noButtonPressCount++; // Increment to move to the next message
             } else {
-                document.getElementById("noButton").style.display = 'none'; // Hide the No button after 8 presses
+                // After 8 presses, hide the No button and grow the Yes button
+                document.getElementById("noButton").style.display = 'none'; // Hide the No button
                 document.getElementById("yesButton").classList.add('grown'); // Grow the Yes button
             }
         };
     </script>
+
 </body>
 </html>
