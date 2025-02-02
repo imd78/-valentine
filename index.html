@@ -178,6 +178,8 @@
     </div>
 
     <script>
+        let noButtonPressCount = 0; // To track how many times the No button is pressed
+
         // Yes Button Confirmation
         document.getElementById("yesButton").onclick = function() {
             alert("YAY! My Owl said YES! 🦉❤️🐢 Can't wait to see you on 14/02/2025 at Sheraton Bahrain Hotel!");
@@ -185,24 +187,34 @@
 
         // No Button Logic - With Shrinking and Changing Messages
         document.getElementById("noButton").onclick = function() {
-            let noMessages = [
-                "No? But Noor, I'm your Turtle 🐢 and I love you! 🥺",
-                "Are you sure? What about my cute turtle face? 🐢",
-                "I know you're stubborn, but say yes! 😘",
-                "Your owl eyes sparkle when you say yes! 💜",
-                "If you say no again, I will hide in my turtle shell! 🐢😢",
-                "Noor! Your Aries fire can't resist love! 🔥",
-                "Fine, but remember, I love you forever! ❤️"
-            ];
+            if (noButtonPressCount < 6) { // Limit the number of No button presses
+                let noMessages = [
+                    "No? But Noor, I'm your Turtle 🐢 and I love you! 🥺",
+                    "Are you sure? What about my cute turtle face? 🐢",
+                    "I know you're stubborn, but say yes! 😘",
+                    "Your owl eyes sparkle when you say yes! 💜",
+                    "If you say no again, I will hide in my turtle shell! 🐢😢",
+                    "Noor! Your Aries fire can't resist love! 🔥",
+                    "Fine, but remember, I love you forever! ❤️"
+                ];
 
-            let randomIndex = Math.floor(Math.random() * noMessages.length); // Pick random message
-            alert(noMessages[randomIndex]);
+                let randomIndex = Math.floor(Math.random() * noMessages.length); // Pick random message
+                alert(noMessages[randomIndex]);
 
-            // Shrink the "No" button
-            let noButton = document.getElementById("noButton");
-            let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
-            if (currentSize > 5) {
-                noButton.style.transform = `scale(0.8)`;  // Shrinks the button slightly
+                noButtonPressCount++; // Increment the counter
+
+                // Shrink the "No" button
+                let noButton = document.getElementById("noButton");
+                let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
+                if (currentSize > 10) {
+                    noButton.style.transform = `scale(0.9)`;  // Shrinks the button slightly
+                }
+                if (currentSize <= 10) {
+                    noButton.style.visibility = "hidden"; // Hide the button when it becomes too small
+                }
+            } else {
+                alert("Okay... You made me disappear, my owl will be sad! 🦉💜");
+                document.getElementById("noButton").style.visibility = "hidden"; // Completely hide the button after limit is reached
             }
         };
     </script>
