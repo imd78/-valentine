@@ -3,221 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noor, Will You Be My Valentine?</title>
-    
-    <!-- Font Awesome for Turtle & Owl Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+    <title>Will You Be My Valentine?</title>
     <style>
-        /* General Styling */
         body {
-            background-color: #f5e1f7; /* Light purple for Noor */
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
             text-align: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 20px;
             position: relative;
-            overflow: hidden; /* Prevents scrolling */
+            overflow: hidden;
         }
-
-        /* Big Icons */
-        .icons {
-            font-size: 150px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            z-index: 2; /* Ensure icons appear above background */
+        .question {
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 150px;
+            color: #2e2e2e;
         }
-
-        .owl { color: purple; }
-        .turtle { color: green; }
-
-        /* Love Question */
-        h1 {
-            color: #6a0dad; /* Dark purple text */
-            font-size: 36px;
-            margin-top: 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* YES & NO Buttons (Side by Side) */
         .button-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            z-index: 3; /* Ensure buttons are clickable */
+            margin-top: 40px;
         }
-
         .yes-button, .no-button {
-            font-size: 18px;
-            padding: 12px 25px;
+            padding: 20px 40px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
             border: none;
             border-radius: 10px;
-            cursor: pointer;
-            z-index: 3; /* Ensure buttons are clickable */
+            transition: all 0.3s ease-in-out;
         }
-
         .yes-button {
             background-color: #4CAF50;
             color: white;
-            transition: all 0.5s ease;
         }
-
         .no-button {
-            background-color: #FF5733;
+            background-color: #f44336;
             color: white;
-            transition: transform 0.3s ease-in-out;
         }
-
-        /* Love Dates - Same Size for All Date Boxes */
-        .dates {
-            position: absolute;
-            font-size: 12px; /* Smaller Font */
-            font-weight: bold;
-            color: #6a0dad;
-            background-color: rgba(255, 255, 255, 0.3); /* More Transparent */
-            border: 1px solid #6a0dad;
-            border-radius: 10px;
-            padding: 8px 15px;
-            text-align: center;
-            width: 150px;  /* Same Size for All Date Boxes */
-            height: 70px;  /* Uniform Height */
-            z-index: 2;
-            box-sizing: border-box; /* To avoid any overflow issues */
-        }
-
-        .date1 { top: 10%; left: 5%; }      /* Top Left */
-        .date2 { top: 10%; right: 5%; }     /* Top Right */
-        .date3 { bottom: 15%; left: 5%; }   /* Adjusted Bottom Left */
-        .date4 { bottom: 15%; right: 5%; }  /* Adjusted Bottom Right */
-
-        /* Random Stars Background */
-        .star {
-            position: absolute;
-            color: white;
-            font-size: 10px;
-            animation: star-fade 3s infinite;
-            pointer-events: none;
-            z-index: 1;  /* Stars in the background */
-        }
-
-        /* Star Animation */
-        @keyframes star-fade {
-            0% { opacity: 0.7; }
-            50% { opacity: 0.3; }
-            100% { opacity: 0.7; }
-        }
-
-        /* Ensure Stars Stay Away from Important Content */
-        .star-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
-
-        /* Enlarging Yes Button after No Button Disappears */
         .yes-button.grown {
             font-size: 30px;
-            padding: 50px 100px;
-            transition: all 0.5s ease;
+            padding: 30px 60px;
+        }
+        .date-box {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        #date1 { top: 10px; left: 10px; }
+        #date2 { top: 10px; right: 10px; }
+        #date3 { bottom: 10px; left: 10px; }
+        #date4 { bottom: 10px; right: 10px; }
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FFD700;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+        .star:nth-child(odd) {
+            background-color: #8A2BE2;
         }
     </style>
 </head>
 <body>
 
-    <!-- Love Dates (Smaller & More Subtle) -->
-    <div class="dates date1">🗓️ 04/04/2022 <br> The day we first spoke</div>
-    <div class="dates date2">❤️ 17/05/2022 <br> The day we confessed our love</div>
-    <div class="dates date3">🎂 08/04/1999 <br> The day my owl was born</div>
-    <div class="dates date4">🐢 22/04/1997 <br> The day her turtle was born</div>
+    <div class="question">Noor, will you be my Valentine? ❤️</div>
 
-    <!-- Turtle and Owl Icons at the Top -->
-    <div class="icons">
-        <i class="fas fa-owl owl"></i>  
-        <i class="fas fa-turtle turtle"></i>
-    </div>
-
-    <h1>Noor, Will You Be My Valentine?</h1>
-
-    <!-- Buttons Side by Side -->
     <div class="button-container">
-        <button class="yes-button" id="yesButton">Yes</button>
         <button class="no-button" id="noButton">No</button>
+        <button class="yes-button" id="yesButton">Yes</button>
     </div>
 
-    <!-- Stars randomly placed -->
-    <div class="star-container">
-        <div class="star" style="top: 5%; left: 10%;">⭐</div>
-        <div class="star" style="top: 10%; left: 25%;">⭐</div>
-        <div class="star" style="top: 15%; left: 40%;">⭐</div>
-        <div class="star" style="top: 20%; left: 55%;">⭐</div>
-        <div class="star" style="top: 25%; left: 70%;">⭐</div>
-        <div class="star" style="top: 30%; left: 85%;">⭐</div>
-        <div class="star" style="top: 35%; left: 15%;">⭐</div>
-        <div class="star" style="top: 40%; left: 60%;">⭐</div>
-        <div class="star" style="top: 45%; left: 50%;">⭐</div>
-        <div class="star" style="top: 50%; left: 35%;">⭐</div>
-        <div class="star" style="top: 55%; left: 80%;">⭐</div>
-        <div class="star" style="top: 60%; left: 10%;">⭐</div>
-        <div class="star" style="top: 65%; left: 40%;">⭐</div>
-        <div class="star" style="top: 70%; left: 75%;">⭐</div>
-        <div class="star" style="top: 80%; left: 55%;">⭐</div>
-        <div class="star" style="top: 85%; left: 90%;">⭐</div>
-        <div class="star" style="top: 90%; left: 30%;">⭐</div>
-        <div class="star" style="top: 95%; left: 45%;">⭐</div>
-    </div>
+    <div class="date-box" id="date1">04/04/2022 - First spoke to each other</div>
+    <div class="date-box" id="date2">17/05/2022 - Confessed our love</div>
+    <div class="date-box" id="date3">08/04/1999 - Noor's Birthday</div>
+    <div class="date-box" id="date4">22/04/1997 - My Birthday</div>
 
     <script>
-        let noButtonPressCount = 0; // To track how many times the No button is pressed
-        let noMessagesShown = []; // To keep track of the messages already shown
+        // Date star creation
+        for (let i = 0; i < 30; i++) {
+            let star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            document.body.appendChild(star);
+        }
 
-        // Yes Button Confirmation
-        document.getElementById("yesButton").onclick = function() {
-            alert("YAY! My Owl said YES! 🦉❤️🐢 \nI’m so happy, Noor! You’re the best thing that ever happened to me, and I can’t wait to spend the rest of my life with you! You make my heart skip a beat, my smile grow wider, and my world brighter! 🌟\n\nAlso, how do you manage to be so amazing while being an Aries? You’re a fiery force of love, joy, and determination, and I just can’t get enough of you. 😘🔥💜\n\nI’ll see you on 14/02/2025 at Sheraton Bahrain Hotel! I can’t wait to hold you in my arms and say “I love you” a million times. 🥰");
+        let noButtonPressCount = 0;
+        const noMessages = [
+            "No? But I'm your turtle... 🐢",
+            "Seriously, you can't resist! 🦉",
+            "I know you're stubborn, but I’m more stubborn than you! 😂",
+            "How about one more try? 🦉🐢",
+            "I can’t believe you're making me beg... 🙄",
+            "Alright, I’ll take your stubbornness as a challenge. 😜",
+            "Last chance! You know you can't resist love! ❤️",
+            "Okay, fine! But you left me no choice... 😆"
+        ];
+
+        document.getElementById("noButton").onclick = function() {
+            if (noButtonPressCount < 7) {
+                noButtonPressCount++;
+                let currentMessage = noMessages[noButtonPressCount - 1];
+                document.getElementById("noButton").style.transform = `scale(${1 - noButtonPressCount * 0.12})`;
+                alert(currentMessage);
+            } else {
+                // After 7 presses, hide No button and show Yes button
+                document.getElementById("noButton").style.display = "none";
+                document.getElementById("yesButton").classList.add("grown");
+            }
         };
 
-        // No Button Logic - With Shrinking and Changing Messages
-        document.getElementById("noButton").onclick = function() {
-            let noMessages = [
-                "No? But I’m your turtle... 🐢",
-                "You can’t resist me forever, can you? 😉",
-                "I know your stubbornness, but I'm more stubborn than you now! 😂",
-                "I knew you couldn't resist my love forever! 🥰",
-                "It’s impossible to say no to me, right? 😜",
-                "I see your fire, but my turtle’s love is unbreakable! 🐢❤️🔥",
-                "You’re an Aries, but I’m more patient than you think... 😏",
-                "I know you're stubborn, but now I have no choice... 😂"
-            ];
-
-            // Shrink button on click and show messages in order
-            if (noButtonPressCount < 8) {
-                // Shrink the button with each press
-                document.getElementById("noButton").style.transform = `scale(${1 - (noButtonPressCount * 0.125)})`;
-
-                // Only show a new message when it hasn't been shown yet
-                if (!noMessagesShown.includes(noMessages[noButtonPressCount])) {
-                    alert(noMessages[noButtonPressCount]);
-                    noMessagesShown.push(noMessages[noButtonPressCount]); // Mark this message as shown
-                }
-
-                noButtonPressCount++; // Increment to move to the next message
-            } else {
-                // After 8 presses, hide the No button and grow the Yes button
-                document.getElementById("noButton").style.display = 'none'; // Hide the No button
-                document.getElementById("yesButton").classList.add('grown'); // Grow the Yes button
-            }
+        document.getElementById("yesButton").onclick = function() {
+            alert("YAY! My Owl said YES! 🦉❤️🐢 \n\nWell, I guess it’s official now – you can’t resist my turtle charm! 🐢💚 But seriously, Noor, I’m so incredibly happy that you said yes! You're my best friend, my love, and the reason I smile every single day. I can’t wait to hold you close and spoil you with all the love and joy you deserve. 😘💖\n\nAlso, just so you know, I’m probably more stubborn than you... so you were never really getting away from me! 😜\n\nI’ll see you on 14/02/2025 at Sheraton Bahrain Hotel! Get ready for a night filled with laughter, love, and some seriously bad jokes! 😂💫");
         };
     </script>
 
