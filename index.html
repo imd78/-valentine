@@ -188,15 +188,16 @@
 
         // No Button Logic - With Shrinking and Changing Messages
         document.getElementById("noButton").onclick = function() {
-            if (noButtonPressCount < 6) { // Limit the number of No button presses
+            if (noButtonPressCount < 8) { // Allow 8 times before disappearing
                 let noMessages = [
-                    "No? But Noor, I'm your Turtle 🐢 and I love you! 🥺",
+                    "No? But I'm your Turtle 🐢 and I love you! 🥺", // First message
                     "Are you sure? What about my cute turtle face? 🐢",
                     "I know you're stubborn, but say yes! 😘",
                     "Your owl eyes sparkle when you say yes! 💜",
                     "If you say no again, I will hide in my turtle shell! 🐢😢",
-                    "Noor! Your Aries fire can't resist love! 🔥",
-                    "Fine, but remember, I love you forever! ❤️"
+                    "Come on, Noor! I’m sure your heart says yes! ❤️",
+                    "Okay, okay... I still love you, no matter what! ❤️", // Last message
+                    "I know you're stubborn, but I'm more stubborn than you now! You left me with no choice! 😂"
                 ];
 
                 // Ensure the message is not repeated
@@ -215,23 +216,18 @@
                 // Increment the counter
                 noButtonPressCount++;
 
-                // Shrink the "No" button progressively with each click
+                // Shrink the "No" button progressively with each click (8 times)
                 let noButton = document.getElementById("noButton");
                 let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
-                if (currentSize > 10) {
+                if (currentSize > 10 && noButtonPressCount <= 8) {
                     noButton.style.transform = `scale(0.9)`;  // Shrinks the button slightly each time
                 }
-                if (currentSize <= 10) {
+                if (noButtonPressCount >= 8) {
                     noButton.style.visibility = "hidden"; // Hide the button when it becomes too small
                     document.getElementById("yesButton").style.visibility = "visible"; // Keep the Yes button visible
                 }
-            } else {
-                alert("Okay... You made me disappear, my owl will be sad! 🦉💜");
-                document.getElementById("noButton").style.visibility = "hidden"; // Completely hide the button after limit is reached
-                document.getElementById("yesButton").style.visibility = "visible"; // Ensure Yes button stays visible
             }
         };
     </script>
-
 </body>
 </html>
