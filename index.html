@@ -69,6 +69,7 @@
         .yes-button {
             background-color: #4CAF50;
             color: white;
+            transition: all 0.5s ease;
         }
 
         .no-button {
@@ -124,12 +125,6 @@
             right: 0;
             bottom: 0;
             z-index: 1;
-        }
-
-        /* Ensure the buttons are at the top layer */
-        .button-container {
-            position: relative;
-            z-index: 3;
         }
 
         /* Enlarging Yes Button after No Button Disappears */
@@ -195,31 +190,29 @@
 
         // No Button Logic - With Shrinking and Changing Messages
         document.getElementById("noButton").onclick = function() {
-            if (noButtonPressCount < 8) { // Allow 8 times before disappearing
-                let noMessages = [
-                    "No? But I'm your Turtle 🐢 and I love you! 🥺", // First message
-                    "Are you sure? What about my cute turtle face? 🐢",
-                    "I know you're stubborn, but say yes! 😘",
-                    "Your owl eyes sparkle when you say yes! 💜",
-                    "If you say no again, I will hide in my turtle shell! 🐢😢",
-                    "Come on, Noor! I’m sure your heart says yes! ❤️",
-                    "Okay, okay... I still love you, no matter what! ❤️", // Last message
-                    "I know you're stubborn, but I’m more stubborn than you now! 😂"
-                ];
+            let noMessages = [
+                "No? But I’m your turtle... 🐢",
+                "You can’t resist me forever, can you? 😉",
+                "I know your stubbornness, but I'm more stubborn than you now! 😂",
+                "I knew you couldn't resist my love forever! 🥰",
+                "It’s impossible to say no to me, right? 😜",
+                "I see your fire, but my turtle’s love is unbreakable! 🐢❤️🔥",
+                "You’re an Aries, but I’m more patient than you think... 😏",
+                "I know you're stubborn, but now I have no choice... 😂"
+            ];
 
-                // Shrink button
+            // Shrink button on click
+            if (noButtonPressCount < 8) {
                 document.getElementById("noButton").style.transform = `scale(${1 - noButtonPressCount * 0.1})`;
 
-                // Show the next message
                 if (!noMessagesShown.includes(noMessages[noButtonPressCount])) {
                     alert(noMessages[noButtonPressCount]);
                     noMessagesShown.push(noMessages[noButtonPressCount]);
                 }
 
-                noButtonPressCount++; // Increase count
-
+                noButtonPressCount++; // Increment to move to the next message
             } else {
-                document.getElementById("noButton").style.display = 'none'; // Hide the No button after 8 clicks
+                document.getElementById("noButton").style.display = 'none'; // Hide the No button after 8 presses
                 document.getElementById("yesButton").classList.add('grown'); // Grow the Yes button
             }
         };
